@@ -13,8 +13,8 @@ Para comprobar si tienes Node: `node --version`
 ## Cómo ejecutarlo
 
 ```bash
-git clone https://github.com/pmartjene/NOMBREQUEPONGAREPOSITORIO.git
-cd NOMBREQUEPONGAREPOSITORIO
+git clone https://github.com/pmartjene/repositorio-trabajo-final1.git
+cd repositorio-trabajo-final1
 npm install
 npm run dev
 ```
