@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 215 85% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 15% 92%;
+    --secondary-foreground: 215 25% 20%;
+
+    --muted: 210 15% 95%;
+    --muted-foreground: 215 15% 45%;
+
+    --accent: 145 65% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 88%;
+    --input: 215 20% 90%;
+    --ring: 215 85% 45%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 30% 12%;
+    --foreground: 210 20% 95%;
+
+    --card: 215 25% 16%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 215 25% 16%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 215 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 20% 22%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 215 20% 20%;
+    --muted-foreground: 215 15% 60%;
+
+    --accent: 145 65% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 25%;
+    --input: 215 20% 22%;
+    --ring: 215 85% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Modo Alto Contraste - Claro */
+  .high-contrast {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 220 100% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 90%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 25%;
+
+    --accent: 145 100% 25%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 100% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 0%;
+    --input: 0 0% 85%;
+    --ring: 220 100% 35%;
+  }
+
+  /* Modo Alto Contraste - Oscuro */
+  .dark.high-contrast {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 210 100% 70%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 75%;
+
+    --accent: 145 100% 60%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 0 0% 0%;
+
+    --border: 0 0% 100%;
+    --input: 0 0% 20%;
+    --ring: 210 100% 70%;
+  }
+
+
+  /* ========== FILTROS DE DALTONISMO ========== */
+  
+  /* Deuteranopia (dificultad con el verde) */
+  .deuteranopia {
+    filter: url('#deuteranopia-filter');
+  }
+
+  /* Protanopia (dificultad con el rojo) */
+  .protanopia {
+    filter: url('#protanopia-filter');
+  }
+
+  /* Tritanopia (dificultad con el azul) */
+  .tritanopia {
+    filter: url('#tritanopia-filter');
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Accesibilidad: Focus visible mejorado */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Skip link para navegación por teclado */
+  .skip-link {
+    @apply absolute left-4 top-4 z-50 px-4 py-2 bg-primary text-primary-foreground rounded-md font-medium;
+    transform: translateY(-200%);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  /* Reducir movimiento para usuarios que lo prefieran */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Mejorar legibilidad del texto */
+  p, li, span {
+    line-height: 1.6;
+  }
+
+  /* Indicadores de estado más visibles */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
